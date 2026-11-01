@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b2a5b"><title>AC Care Management</title>
-<meta name="description" content="Manajemen pelanggan, jadwal cuci AC berkala, dan pengingat WhatsApp.">
-<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<meta name="theme-color" content="#0b2a5b"><title>Teknisi Muda</title>
+<meta name="description" content="Teknisi Muda: manajemen pelanggan, jadwal cuci AC berkala, dan pengingat WhatsApp.">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
-<meta property="og:type" content="website"><meta property="og:title" content="AC Care Management"><meta property="og:description" content="Jadwal cuci AC berkala dan pengingat WhatsApp."><meta property="og:image" content="assets/img/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website"><meta property="og:title" content="Teknisi Muda"><meta property="og:description" content="Jadwal cuci AC berkala dan pengingat WhatsApp."><meta property="og:image" content="assets/img/og-image.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/css/style.css"></head>
 <body>
 <section id="login" class="login-wrap">
-<div class="login-art"><img src="assets/img/logo.svg" alt="AC Care" width="88" height="88"><h1>AC CARE</h1><p>Kelola pelanggan, jadwal cuci AC berkala, dan pengingat WhatsApp dalam satu aplikasi.</p></div>
+<div class="login-art"><div class="logo-card"><img src="assets/img/logo-full.png" alt="Teknisi Muda"></div><p>Kelola pelanggan, jadwal cuci AC berkala, dan pengingat WhatsApp dalam satu aplikasi.</p></div>
 <form id="fLogin" class="login-card"><h2>Masuk</h2><p class="muted">Gunakan akun yang diberikan admin.</p>
 <label for="u">Username</label><input id="u" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
 <label for="p">Password</label><div class="pw"><input id="p" type="password" autocomplete="current-password" required><button type="button" id="tgPw">Lihat</button></div>
 <div id="lerr" class="lerr" hidden></div><button class="btn block" id="btnLogin">Masuk</button></form></section>
 <div id="app" hidden><div id="scrim"></div>
-<aside id="side"><div class="brand"><img src="assets/img/logo.svg" width="38" height="38" alt=""><b id="brand">AC CARE</b></div>
+<aside id="side"><div class="brand"><img src="assets/img/logo-mark.png" width="40" height="40" alt=""><b id="brand">Teknisi Muda</b></div>
 <nav><button data-t="dash"><i></i><span>Dashboard</span></button><button data-t="plg"><i></i><span>Pelanggan</span></button><button data-t="trx"><i></i><span>Transaksi</span></button><button data-t="jdw"><i></i><span>Jadwal</span></button><button data-t="rem"><i></i><span>Pengingat</span></button><button data-t="lap"><i></i><span>Laporan</span></button><button data-t="set"><i></i><span>Pengaturan</span></button></nav><div class="side-foot"><div id="who"></div><button id="btnOut"><i></i><span>Keluar</span></button></div></aside>
 <div class="main"><header class="top"><button id="burger" aria-label="Menu">&#9776;</button><h2 id="pgTitle">Dashboard</h2></header>
 <main>

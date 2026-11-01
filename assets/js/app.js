@@ -18,7 +18,7 @@ const ICON = {
   out: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>'
 };
 document.querySelectorAll('#side button').forEach(b => b.querySelector('i').innerHTML = '<svg viewBox="0 0 24 24">' + ICON[b.dataset.t || 'out'] + '</svg>');
-function applyBrand() { $('#brand').textContent = SET.nama_usaha || 'AC CARE'; document.title = (SET.nama_usaha || 'AC Care') + ' · Manajemen'; }
+function applyBrand() { $('#brand').textContent = SET.nama_usaha || 'Teknisi Muda'; document.title = (SET.nama_usaha || 'Teknisi Muda'); }
 function show(t) {
   document.querySelectorAll('main>section').forEach(s => s.hidden = s.id !== t);
   document.querySelectorAll('#side nav button').forEach(b => b.classList.toggle('on', b.dataset.t === t));
@@ -73,7 +73,7 @@ LOAD.trx = wrap(async () => { TX = await api('getTransactions', {}); trxRender()
 $('#fTrx').oninput = trxRender;
 const invoiceHtml = (x, S) => {
   const sub = Number(x.unit) * Number(x.harga), ok = x.status_bayar === 'LUNAS';
-  return `<div class="inv-head"><div class="inv-brand"><img src="assets/img/icon-192.png" width="64" height="64" alt=""><div><h2>${esc(S.nama_usaha)}</h2><small>${esc(S.alamat_usaha)}${S.alamat_usaha && S.telp_usaha ? '<br>' : ''}${S.telp_usaha ? 'Telp/WA: ' + esc(S.telp_usaha) : ''}</small></div></div><div class="inv-title"><h1>INVOICE</h1><div>No: <b>INV/${esc(x.id)}</b></div><div>Tanggal: <b>${esc(fmtTgl(x.tanggal))}</b></div></div></div>
+  return `<div class="inv-head"><div class="inv-brand"><img src="assets/img/logo-full.png" alt="${esc(S.nama_usaha)}" style="width:250px;height:auto"></div><div class="inv-title"><h1>INVOICE</h1><div>No: <b>INV/${esc(x.id)}</b></div><div>Tanggal: <b>${esc(fmtTgl(x.tanggal))}</b></div></div></div><div class="inv-co"><b>${esc(S.nama_usaha)}</b>${S.alamat_usaha ? ' · ' + esc(S.alamat_usaha) : ''}${S.telp_usaha ? ' · Telp/WA: ' + esc(S.telp_usaha) : ''}</div>
 <div class="inv-mid"><div><small>DITAGIHKAN KEPADA</small><b>${esc(x.nama)}</b><br>${esc(x.alamat)}<br>WhatsApp: ${esc(x.whatsapp)}</div><div class="stamp ${ok ? 'ok' : 'no'}">${esc(x.status_bayar)}</div></div>
 <table class="inv-tbl"><tr><th style="text-align:left">Deskripsi</th><th>Qty</th><th>Harga</th><th>Jumlah</th></tr><tr><td>Jasa pencucian AC${x.teknisi ? '<br><small>Teknisi: ' + esc(x.teknisi) + '</small>' : ''}${x.catatan ? '<br><small>' + esc(x.catatan) + '</small>' : ''}</td><td>${esc(x.unit)} unit</td><td>${rp(x.harga)}</td><td>${rp(sub)}</td></tr></table>
 <div class="inv-sum"><div>Subtotal <b>${rp(sub)}</b></div><div>Diskon <b>- ${rp(x.diskon)}</b></div><div class="grand">Total <b>${rp(x.total)}</b></div></div>
