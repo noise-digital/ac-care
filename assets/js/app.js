@@ -36,7 +36,13 @@ $('#fTrx').oninput = () => { const f = form($('#fTrx')); $('#total').textContent
   $('#prev').textContent = (f.tanggal && n >= 1 && n <= 60) ? 'Jadwal berikutnya: ' + addM(f.tanggal, n) + ' · pengingat H-2: ' + addD(addM(f.tanggal, n), -2) : ''; };
 $('#qPlg').oninput = () => LOAD.plg();
 $('#btnCek').onclick = wrap(async () => { const r = await api('runReminderCheck'); toast('Pengingat baru: ' + r.dibuat); LOAD.rem(); });
-$('#btnLogin').onclick = wrap(async () => { const r = await api('login', { username: $('#u').value, password: $('#p').value }); localStorage.setItem('acc_token', r.token); start(r.user); });
+$('#tgPw').onclick = () => { const i = $('#p'), h = i.type === 'password'; i.type = h ? 'text' : 'password'; $('#tgPw').textContent = h ? 'Sembunyi' : 'Lihat'; };
+$('#fLogin').onsubmit = async e => {
+  e.preventDefault(); const b = $('#btnLogin'), er = $('#lerr'); er.hidden = true; b.disabled = true; b.textContent = 'Memproses…';
+  try { const r = await api('login', { username: $('#u').value.trim(), password: $('#p').value }); localStorage.setItem('acc_token', r.token); start(r.user); }
+  catch (x) { er.textContent = /fetch|Failed|NetworkError|JSON/i.test(x.message) ? 'Tidak dapat terhubung ke server. Periksa API_URL di config.js dan deployment Apps Script.' : x.message; er.hidden = false; }
+  finally { b.disabled = false; b.textContent = 'Masuk'; }
+};
 $('#btnOut').onclick = wrap(async () => { await api('logout'); localStorage.removeItem('acc_token'); location.reload(); });
 function start(u) { me = u; $('#login').hidden = true; $('#app').hidden = false; $('#who').textContent = u.nama + ' (' + u.role + ')'; document.querySelectorAll('[data-t=rem],[data-t=lap]').forEach(b => b.hidden = u.role !== 'ADMIN'); show('dash'); }
 if (localStorage.getItem('acc_token')) api('validateSession').then(start).catch(() => localStorage.removeItem('acc_token'));

@@ -18,3 +18,17 @@ textarea{width:100%;padding:10px;margin:4px 0;border:1px solid #b9d4f0;border-ra
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;margin:12px}.cal>b{text-align:center;color:var(--b)}.cal .day{background:#fff;min-height:72px;border-radius:6px;padding:3px;font-size:12px;overflow:hidden}.cal .day.today{outline:2px solid var(--a)}
 .cal em{display:block;font-size:11px;font-style:normal;border-radius:4px;padding:1px 4px;margin-top:2px;background:#e6f2ff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cal em.r-today{background:#fff3cd}.cal em.r-h2{background:#bfe0ff}.cal em.r-late{background:#ffd9d9}.cal em.r-done{background:#dff5e1}
+[hidden]{display:none!important}input,select,textarea{font-size:16px}
+.top img{border-radius:7px}
+.login-wrap{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:1.1fr 1fr;background:#fff}
+.login-art{background:linear-gradient(160deg,#0b2a5b,#14467f 60%,#3da9fc);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:48px;gap:6px}
+.login-art h1{margin:10px 0 0;font-size:42px;letter-spacing:2px;text-align:left}.login-art p{max-width:380px;opacity:.92;line-height:1.55;margin:6px 0 0}
+.login-card{align-self:center;justify-self:center;width:100%;max-width:400px;padding:32px 26px}
+.login-card h2{margin:0;color:var(--b);font-size:26px}.muted{color:#5a6f8f;margin:4px 0 14px}
+.login-card label{display:block;font-size:13px;font-weight:600;color:var(--b);margin-top:12px}
+.pw{position:relative}.pw input{padding-right:78px}.pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:var(--l);color:var(--b);border-radius:6px;padding:6px 10px;cursor:pointer}
+.btn.block{width:100%;margin-top:16px;padding:13px;font-weight:600}.btn:disabled{opacity:.6;cursor:wait}
+.lerr{background:#ffd9d9;color:#8a1c1c;border-radius:8px;padding:9px 11px;margin-top:12px;font-size:14px}
+@media(max-width:800px){.login-wrap{grid-template-columns:1fr;grid-template-rows:auto 1fr;background:var(--l)}
+.login-art{align-items:center;text-align:center;padding:30px 20px 54px;border-radius:0 0 28px 28px}.login-art img{width:68px;height:68px}.login-art h1{font-size:28px;text-align:center;margin:6px 0 0}.login-art p{display:none}
+.login-card{background:#fff;border-radius:16px;box-shadow:0 6px 24px #0b2a5b30;margin:-28px 16px 24px;width:auto;max-width:none;justify-self:stretch;align-self:start;padding:24px 20px}}

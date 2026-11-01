@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AC Care Management</title><link rel="stylesheet" href="assets/css/style.css"></head>
+<meta name="theme-color" content="#0b2a5b"><title>AC Care Management</title>
+<meta name="description" content="Manajemen pelanggan, jadwal cuci AC berkala, dan pengingat WhatsApp.">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website"><meta property="og:title" content="AC Care Management"><meta property="og:description" content="Jadwal cuci AC berkala dan pengingat WhatsApp."><meta property="og:image" content="assets/img/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/css/style.css"></head>
 <body>
-<section id="login" class="card login"><h1>AC CARE</h1>
-<input id="u" placeholder="Username" autocomplete="username"><input id="p" type="password" placeholder="Password" autocomplete="current-password">
-<button id="btnLogin" class="btn">Masuk</button></section>
+<section id="login" class="login-wrap">
+<div class="login-art"><img src="assets/img/logo.svg" alt="AC Care" width="88" height="88"><h1>AC CARE</h1><p>Kelola pelanggan, jadwal cuci AC berkala, dan pengingat WhatsApp dalam satu aplikasi.</p></div>
+<form id="fLogin" class="login-card"><h2>Masuk</h2><p class="muted">Gunakan akun yang diberikan admin.</p>
+<label for="u">Username</label><input id="u" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+<label for="p">Password</label><div class="pw"><input id="p" type="password" autocomplete="current-password" required><button type="button" id="tgPw">Lihat</button></div>
+<div id="lerr" class="lerr" hidden></div><button class="btn block" id="btnLogin">Masuk</button></form></section>
 <div id="app" hidden>
-<header class="top"><b>AC CARE</b><span id="who"></span><button id="btnOut" class="btn sm">Keluar</button></header>
+<header class="top"><img src="assets/img/logo.svg" alt="" width="28" height="28"><b>AC CARE</b><span id="who"></span><button id="btnOut" class="btn sm">Keluar</button></header>
 <nav class="tabs"><button data-t="dash" class="on">Dashboard</button><button data-t="plg">Pelanggan</button><button data-t="trx">Transaksi</button><button data-t="jdw">Jadwal</button><button data-t="pay">Pembayaran</button><button data-t="rem">Pengingat</button><button data-t="lap">Laporan</button><button data-t="set">Pengaturan</button></nav>
 <main>
 <section id="dash"></section>
