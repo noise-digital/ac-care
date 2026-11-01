@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AC Care Management</title><link rel="stylesheet" href="assets/css/style.css"></head>
+<body>
+<section id="login" class="card login"><h1>AC CARE</h1>
+<input id="u" placeholder="Username" autocomplete="username"><input id="p" type="password" placeholder="Password" autocomplete="current-password">
+<button id="btnLogin" class="btn">Masuk</button></section>
+<div id="app" hidden>
+<header class="top"><b>AC CARE</b><span id="who"></span><button id="btnOut" class="btn sm">Keluar</button></header>
+<nav class="tabs"><button data-t="dash" class="on">Dashboard</button><button data-t="plg">Pelanggan</button><button data-t="trx">Transaksi</button><button data-t="jdw">Jadwal</button><button data-t="pay">Pembayaran</button><button data-t="rem">Pengingat</button><button data-t="lap">Laporan</button><button data-t="set">Pengaturan</button></nav>
+<main>
+<section id="dash"></section>
+<section id="plg" hidden><div class="card"><form id="fPlg"><input name="nama" placeholder="Nama" required><input name="whatsapp" placeholder="No. WhatsApp (08..)" required><input name="alamat" placeholder="Alamat"><input name="catatan" placeholder="Catatan"><input type="hidden" name="id"><label><input type="checkbox" name="persetujuan_wa" value="YA" style="width:auto"> Setuju menerima pesan WhatsApp</label><button class="btn">Simpan Pelanggan</button></form></div>
+<input id="qPlg" placeholder="Cari nama / nomor WA"><div class="wrap"><table id="tPlg"></table></div><div id="riw"></div></section>
+<section id="trx" hidden><div class="card"><form id="fTrx">
+<select name="id_pelanggan" id="selPlg" required></select><input name="tanggal" type="date" required>
+<input name="unit" type="number" min="1" value="1" placeholder="Unit AC" required><input name="harga" type="number" min="0" placeholder="Harga/unit" required>
+<input name="diskon" type="number" min="0" value="0" placeholder="Diskon (Rp)"><div id="total" class="total">Total: Rp 0</div>
+<select name="status_bayar"><option>LUNAS</option><option>BELUM LUNAS</option></select><select name="metode"><option>TUNAI</option><option>TRANSFER</option><option>QRIS</option></select>
+<select name="interval" id="selInt"><option>3</option><option selected>4</option><option>5</option><option>6</option><option value="custom">Atur sendiri…</option></select><input id="intCustom" type="number" min="1" max="60" placeholder="Interval (bulan)" hidden><div id="prev" class="total"></div>
+<input name="teknisi" placeholder="Teknisi"><input name="catatan" placeholder="Catatan pekerjaan"><button class="btn">Simpan Transaksi</button></form></div>
+<div class="wrap"><table id="tTrx"></table></div></section>
+<section id="jdw" hidden><div class="card"><form id="fJ" onsubmit="return false"><input id="jQ" placeholder="Cari nama"><select id="jS"><option value="">Semua status</option><option>MENUNGGU</option><option>SEGERA JATUH TEMPO</option><option>PENGINGAT TERKIRIM</option><option>SUDAH DIJADWALKAN</option><option>SELESAI</option><option>DITUNDA</option><option>DIBATALKAN</option></select><input id="jM" type="month" title="Bulan"><button class="btn lt" id="jMode">Tampilan kalender</button></form></div><div id="cal" hidden></div><div class="wrap"><table id="tJdw"></table></div></section>
+<section id="rem" hidden><button id="btnCek" class="btn sm">Jalankan cek H-2 sekarang</button><div id="lRem"></div></section>
+<section id="pay" hidden><div class="card"><form id="fPay"><select id="payS"><option value="">Semua status</option><option>LUNAS</option><option>BELUM LUNAS</option></select><input type="date" id="payA" title="Dari"><input type="date" id="payB" title="Sampai"><input id="payQ" placeholder="Nama pelanggan"></form><div id="payTot" class="total"></div></div><div class="wrap"><table id="tPay"></table></div></section>
+<section id="lap" hidden><div class="card"><form id="fLap" onsubmit="return false"><select id="lapJ"><option value="harian">Harian</option><option value="mingguan">Mingguan</option><option value="bulanan" selected>Bulanan</option><option value="tahunan">Tahunan</option></select><input type="date" id="lapT"><button class="btn" id="btnLap">Tampilkan</button><button class="btn lt" id="btnCsv">Ekspor CSV</button><button class="btn lt" id="btnPrint">Cetak</button></form></div><div id="lapOut"></div></section>
+<section id="set" hidden>
+<div class="card"><b>Ganti password saya</b><form id="fPw"><input name="lama" type="password" placeholder="Password lama" required><input name="baru" type="password" placeholder="Password baru (min 8)" minlength="8" required><button class="btn">Simpan</button></form></div>
+<div id="adm" hidden>
+<div class="card"><b>Pengaturan usaha &amp; WhatsApp</b><form id="fSet"><input name="nama_usaha" placeholder="Nama usaha"><input name="interval_default" type="number" min="1" max="60" placeholder="Interval default (bulan)"><textarea name="template_pesan" rows="4" placeholder="Template pesan. Gunakan {nama} {tanggal} {usaha} {alamat}"></textarea><select name="wa_api_aktif"><option value="TIDAK">WhatsApp API: nonaktif (pakai tombol wa.me)</option><option value="YA">WhatsApp API: aktif (kirim otomatis)</option></select><input name="wa_template" placeholder="Nama template WhatsApp (dari Meta)"><input name="wa_lang" placeholder="Kode bahasa template, contoh: id"><button class="btn">Simpan Pengaturan</button></form><small id="waInfo"></small></div>
+<div class="card"><b>Tambah akun pengguna</b><form id="fUsr"><input name="username" placeholder="Username" required><input name="nama" placeholder="Nama" required><input name="password" type="password" placeholder="Password (min 8)" required><select name="role"><option>STAFF</option><option>ADMIN</option></select><button class="btn">Tambah Akun</button></form></div>
+<div class="wrap"><table id="tUsr"></table></div></div></section>
+</main></div><div id="toast"></div>
+<script src="assets/js/config.js"></script><script src="assets/js/api.js"></script><script src="assets/js/app.js"></script>
+</body></html>
